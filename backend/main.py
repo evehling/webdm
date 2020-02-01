@@ -14,10 +14,16 @@
 
 # [START gae_python37_render_template]
 #This is an example of hosting a server in python using flask with multiple examples
-#of how to handle things like 
+
+
 #import statements
 import datetime
 from flask import Flask, escape, request, render_template, jsonify
+import spacy
+from spacy.matcher import Matcher
+from spacy.lang import en
+spacy_stopwords = en.stop_words.STOP_WORDS
+nlp = spacy.load("en_core_web_sm")
 
 app = Flask(__name__)
 
@@ -26,25 +32,25 @@ app = Flask(__name__)
 def home():
     req_data = request.get_json()
     input = req_data['input']
-    
-    return jsonify({"relevant": True})
+    data = nlp(input) #generate 
+    filtered_input = []
+    filtered = []
+    for word in data:
+        if word.is_stop==False:
+            filtered_input.append(str(word))
+            filtered.append(word)
+    lemmas = []
+    for word in filtered:
+        lemmas.append(str(word.lemma_))
 
+    #also need to assert "stop" should be translated to "continous" (the context, 'i can't stop coughing)
+    return jsonify({"relevant": True,"filteredinput":filtered_input, "lemmas": lemmas})
 
-#this demoes how we can make get and post requests to this page
+#this demos how we can make post requests to this the /json-example page
 @app.route('/json-example', methods=['POST']) #GET requests will be blocked
 def json_example():
     req_data = request.get_json()
     input = req_data['input']
-
-    ''' language = None
-    if 'language' in req_data:
-        language = req_data['language']
-    language = req_data['language']
-    framework = req_data['framework']
-    python_version = req_data['version_info']['python'] #two keys are needed because of the nested object
-    example = req_data['examples'][0] #an index is needed because of the array
-    boolean_test = req_data['boolean_test']
- '''
     return jsonify(input)
 
 
