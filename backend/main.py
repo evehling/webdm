@@ -13,10 +13,7 @@
 # limitations under the License.
 
 # [START gae_python37_render_template]
-#This is an example of hosting a server in python using flask with multiple examples
 
-
-#import statements
 import datetime
 from flask import Flask, escape, request, render_template, jsonify
 import spacy
@@ -24,36 +21,75 @@ from spacy.matcher import Matcher
 from spacy.lang import en
 spacy_stopwords = en.stop_words.STOP_WORDS
 nlp = spacy.load("en_core_web_sm")
-
 app = Flask(__name__)
 
-#home route, probably just want to use this for deploying
+#Lemmatized symptoms
+ALLERGIES = ["sneeze", "red", "itchy", "runny", "nose","blocked","allergic","watering","eyes", "wheezing", 
+"chest", "tightness", "short", "breath", "cough", "rash", "swollen", "lips", "tongue", "pain", "stomach",
+"sick", "vomiting", "diarrea", "dry"]
+STROKE = ["sudden", "numb", "weak", "face", "arm", "leg", "one", "side", "body", "confuse",
+"speak","understanding", "speech", "see", "eyes", "walk", "dizzy", "balance", "coordination","headache", "severe"]
+HEART_ATTACK = ["pressure", "tightness", "pain", "ache", "arms", "chest", "neck", "jaw", "back", "nausea","indigestion",
+"heartburn", "abdominal", "pain", "sweat", "fatigue", "lightheaded", "dizzy", "sudden"]
+COUGH_FLU = ["cough", "flu", "headache", "sore", "throat", "pain","hot","ache","muscle", "fever","runny","nose"]
+SKIN = ["blackheads", "white heads", "red", "bumps", "pimples", "pustules", "inflamed","nodules", "face",
+"back", "chest", "neck", "itching", "draining", "pus", "cough","pink eye","runny","nose"]
+
+
+#Decript: Categorizer that returns the category (string) with most matches 
+#to input lemmas (pretty inefficent but functional for our current data set size)
+#Input: array of lemmas
+#Output: Category (string)
+def symptomCategory(lemmas):
+    cFCount = 0
+    acCount = 0
+    sCount = 0
+    hACount = 0
+    alCount = 0
+    for lem in lemmas:
+        # for word in ALLERGIES:
+        #     if lem == word: 
+        #         alCount+=1
+        for word in STROKE:
+            if lem == word:
+                sCount += 1
+        # for word in HEART_ATTACK:
+        #     if lem == word:
+        #         hACount += 1
+        for word in COUGH_FLU:
+            if word  == lem:
+                cFCount+=1
+        for word in SKIN:
+            if word == lem:
+                acCount+=1 
+    if sCount < cFCount:
+        if cFCount < acCount:
+            return "Skin"
+        else:
+            return "Cold/Flu"
+    else:
+        if sCount < acCount:
+            return "Skin"
+        else:
+            return "Stroke"
+    
+
+#Input: Takes in a JSON object with input string
+#Return: JSON object with predicted category string
 @app.route('/', methods=['POST'])
 def home():
     req_data = request.get_json()
     input = req_data['input']
-    data = nlp(input) #generate 
-    filtered_input = []
+    data = nlp(input) #generate nlp object
     filtered = []
-    for word in data:
+    for word in data: #extract words
         if word.is_stop==False:
-            filtered_input.append(str(word))
             filtered.append(word)
     lemmas = []
-    for word in filtered:
+    for word in filtered: #lemmatize words
         lemmas.append(str(word.lemma_))
-
-    #also need to assert "stop" should be translated to "continous" (the context, 'i can't stop coughing)
-    return jsonify({"relevant": True,"filteredinput":filtered_input, "lemmas": lemmas})
-
-#this demos how we can make post requests to this the /json-example page
-@app.route('/json-example', methods=['POST']) #GET requests will be blocked
-def json_example():
-    req_data = request.get_json()
-    input = req_data['input']
-    return jsonify(input)
-
-
+    category = symptomCategory(lemmas);
+    return jsonify({"category":category})
 
 if __name__ == '__main__':
 #     # This is used when running locally only. When deploying to Google App
@@ -63,19 +99,7 @@ if __name__ == '__main__':
 #     # the "static" directory. See:
 #     # http://flask.pocoo.org/docs/1.0/quickstart/#static-files. Once deployed,
 #     # App Engine itself will serve those files as configured in app.yaml.
+     #app.run(threaded=True, port=5000)
      app.run(host='127.0.0.1', port=5000, debug=True)
 # # [START gae_python37_render_template]
-''' 
-
-{
-    "language" : "Python",
-    "framework" : "Flask",
-    "website" : "Scotch",
-    "version_info" : {
-        "python" : 3.4,
-        "flask" : 0.12
-    },
-    "examples" : ["query", "form", "json"],
-    "boolean_test" : true
-} '''
 
