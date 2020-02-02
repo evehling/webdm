@@ -1,15 +1,15 @@
 {
-  "questions": [
+  "condition": [
     {
-      "id": 0,
-      "question": "Which condition do you have",
-      "answers": [
-        {
-          "content": "Acne",
-          "points_to": 1
-        }
-      ]
+      "name": "acne",
+      "index_first_question": 1
     },
+    {
+      "name": "Cough / Flu",
+      "index_first_question": 6
+    }
+  ],
+  "questions": [
     {
       "id": 1,
       "question": "How bad is your acne?",
