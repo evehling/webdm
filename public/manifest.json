@@ -16,17 +16,12 @@
     "128": "logo-small.png"
   },
   "permissions": [
+    "tabs"
   ],
-
   "content_scripts": [
-
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": ["content.js"]
-    }
-
-  ]
-  
+   {
+     "matches": ["https://www.google.com/*", "http://www.google.com/*"],
+     "js": ["content.js"]
+   }
+ ]
 }
