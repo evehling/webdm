@@ -10,6 +10,9 @@
     "default_popup": "index.html",
     "default_title": "Webdm"
   },
+  "web_accessible_resources": [
+        "index.css"
+    ],
   "icons": {
     "16": "logo-small.png",
     "48": "logo-small.png",
@@ -21,6 +24,7 @@
   "content_scripts": [
    {
      "matches": ["https://www.google.com/*", "http://www.google.com/*"],
+     "css": ["index.css"],
      "js": ["content.js"]
    }
  ]

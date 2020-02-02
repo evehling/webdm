@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 import constate from "constate";
-import axios from "axios";
 
 
 
@@ -24,6 +23,7 @@ const [StepProvider, useStepContext] = constate(useStep);
 
 const getQuestionInfo = (node) =>
 {
+  console.log(node);
   for (let i = 0; i < jsonData.questions.length; i++) {
     if(jsonData.questions[i].id == node)
     {
