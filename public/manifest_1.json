@@ -23,9 +23,11 @@
 
     {
       "matches": [
-        "https://www.google.com/"
-      ],
+        "matches": ["https://www.google.com/*", "http://www.google.com/*"],
+      
       "js": ["content.js"]
+
+      ]
     }
 
   ]
