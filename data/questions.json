@@ -10,24 +10,24 @@
     },
     {
       "name": "Stroke",
-      "index_first_question": 
-    }
+      "index_first_question": 11
+    },
   ],
   "questions": [
     {
       "id": 1,
-      "question": "How bad is your acne?",
+      "question": "What symptoms are you experiencing?",
       "answers": [
         {
-          "content": "Mild: Blackheads or white heads",
+          "content": "Blackheads or white heads",
           "points_to": 2
         },
         {
-          "content": "Moderate: Red bumps, pimples or pustules",
+          "content": "Red bumps, pimples or pustules",
           "points_to": 2
         },
         {
-          "content": "Severe: Inflamed bumps, red nodules",
+          "content": "Inflamed bumps, red nodules",
           "points_to": 1,
           "leads_to_response": true
         }
@@ -35,7 +35,7 @@
     },
     {
       "id": 2,
-      "question": "Where is your acne located?",
+      "question": "Where are your symptoms located?",
       "answers": [
         {
           "content": "Face",
@@ -119,24 +119,24 @@
     },
     {
       "id": 5,
-      "question": "Which condition do you have",
+      "question": "Are you experiencing either of these symptoms?",
       "answers": [
         {
-          "content": "Cough / Flu",
+          "content": "Cough or fever",
           "points_to": 6
         }
       ]
     },
     {
       "id": 6,
-      "question": "Have you received the flu shot? ",
+      "question": "Have you received a flu shot in the past year? ",
       "answers": [
         {
           "content": "Yes",
           "points_to": 7
         },
         {
-          "content": "Not yet fam",
+          "content": "No",
           "points_to": 7
         }
       ]
@@ -173,7 +173,7 @@
     },
     {
       "id": 8,
-      "question": "Do you have any of the following?",
+      "question": "Do you have a history of any the following?",
       "answers": [
         {
           "content": "Chemotherapy or recently been treated for cancer",
@@ -203,18 +203,18 @@
     },
     {
       "id": 9,
-      "question": "What are your fever symptoms like?",
+      "question": "What is your estimated or exact temperature?",
       "answers": [
         {
-          "content": "Fever > 102",
+          "content": "Temperature greater than 102 degrees F",
           "points_to": 10
         },
         {
-          "content": "Fever < 102",
+          "content": "Temperature greater than 99 degrees F",
           "points_to": 10
         },
         {
-          "content": "No Fever",
+          "content": "Temperature less than 99 degrees F",
           "points_to": 4,
           "leads_to_response": true
         }
@@ -222,7 +222,7 @@
     },
     {
       "id": 10,
-      "question": "How long have you experienced these symptoms",
+      "question": "How long have you been experiencing these symptoms?",
       "answers": [
         {
           "content": "Less than 3 days",
@@ -230,7 +230,7 @@
           "leads_to_response": true
         },
         {
-          "content": "3-7 days",
+          "content": "Between 3-7 days",
           "points_to": 4,
           "leads_to_response": true
         },
@@ -241,29 +241,60 @@
         }
       ]
     }
+    {
+    	"id": 11,
+    	"question": "Are experiencing either of the following symptoms?",
+    	"answers": [
+    	{
+    		"content": "Difficulty or inability to move one side of the body",
+    		"points_to": 3,
+    		"leads_to_response":true
+    	}
+    	{
+    		"content": "Numbness in one side of the body (particularly the left)",
+    		"points_to": 3,
+    		"leads_to_response":true
+    	}
+    	]
+    }
+    {	"id": 12,
+    	"question": "Are you experiencing any of the following symptoms?",
+    	"answers": [
+    	{
+    		"content": "Difficulty speaking or confusion",
+    		"points_to": 3,
+    		"leads_to_response":true
+    	}
+    	{
+    		"content": "Dizziness or difficulty walking",
+    		"points_to": 3,
+    		"leads_to_response":true
+    	}
+    	]
+    }
   ],
   "responses": [
     {
       "id": 1,
-      "recommendation": "We recommend that you see a doctor today about your symptoms",
+      "recommendation": "We recommend that you speak to your physician about your symptoms.",
       "with_insurance": true,
       "insurance_message": {
-        "with_insurance": "Contact your insurance provider",
-        "no_insurance": "Here are providers near you"
+        "with_insurance": "Consider contacting your insurance provider",
+        "no_insurance": "Here are some insurance providers near you."
       }
     },
     {
       "id": 2,
-      "recommendation": "We recommend that you see a doctor today about your symptoms. You might be contageous so don't touch anybody. ",
+      "recommendation": "We recommend scheduling a visit with your doctor as soon as possible about your symptoms.",
       "with_insurance": true,
       "insurance_message": {
-        "with_insurance": "Contact your insurance provider",
+        "with_insurance": "Consider contacting your insurance provider",
         "no_insurance": "Here are providers near you"
       }
     },
     {
       "id": 3,
-      "recommendation": "Go to an urgent care",
+      "recommendation": "Please immediately go to the nearest urgent care. Your symptoms may be potentially life threatening.",
       "with_insurance": true,
       "insurance_message": {
         "with_insurance": "Go to the urgent care for a hospital you are covered at",
@@ -272,11 +303,11 @@
     },
     {
       "id": 4,
-      "recommendation": "We don't think you need to see a doctor. But it appears that you are experiencing some flu symptoms so take it easy.",
+      "recommendation": "Consider contacting your physician if you experience any new or worsening of your symptoms in the next few days.",
       "with_insurance": true,
       "insurance_message": {
-        "with_insurance": "Go to the urgent care for a hospital you are covered at",
-        "no_insurance": "Here are some local urgent care locations for you"
+        "with_insurance": "",
+        "no_insurance": ""
       }
     }
   ]
