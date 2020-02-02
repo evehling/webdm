@@ -20,7 +20,7 @@ import spacy
 from spacy.matcher import Matcher
 from spacy.lang import en
 spacy_stopwords = en.stop_words.STOP_WORDS
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load('en')
 app = Flask(__name__)
 
 #Lemmatized symptoms
@@ -100,6 +100,6 @@ if __name__ == '__main__':
 #     # http://flask.pocoo.org/docs/1.0/quickstart/#static-files. Once deployed,
 #     # App Engine itself will serve those files as configured in app.yaml.
      #app.run(threaded=True, port=5000)
-     app.run(host='127.0.0.1', port=5000, debug=True)
+     app.run(host='0.0.0.0', port=5000)
 # # [START gae_python37_render_template]
 
