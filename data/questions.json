@@ -1,0 +1,279 @@
+{
+  "questions": [
+    {
+      "id": 0,
+      "question": "Which condition do you have",
+      "answers": [
+        {
+          "content": "Acne",
+          "points_to": 1
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "question": "How bad is your acne?",
+      "answers": [
+        {
+          "content": "Mild: Blackheads or white heads",
+          "points_to": 2
+        },
+        {
+          "content": "Moderate: Red bumps, pimples or pustules",
+          "points_to": 2
+        },
+        {
+          "content": "Severe: Inflamed bumps, red nodules",
+          "points_to": 1,
+          "leads_to_response": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Where is your acne located?",
+      "answers": [
+        {
+          "content": "Face",
+          "points_to": 4
+        },
+        {
+          "content": "Back",
+          "points_to": 1
+        },
+        {
+          "content": "Chest",
+          "points_to": 1
+        },
+        {
+          "content": "Neck",
+          "points_to": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "What other symptoms are you experiencing?",
+      "answers": [
+        {
+          "content": "Itching",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "Severe Pain",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "Draining Pus",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "Other",
+          "points_to": 1,
+          "leads_to_response": true
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "What other symptoms are you experiencing?",
+      "answers": [
+        {
+          "content": "Itching",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "Severe Pain",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "Draining Pus",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "Cough",
+          "points_to": 2,
+          "leads_to_response": true
+        },
+        {
+          "content": "Runny Nose",
+          "points_to": 2,
+          "leads_to_response": true
+        },
+        {
+          "content": "Pink Eye",
+          "points_to": 2,
+          "leads_to_response": true
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Which condition do you have",
+      "answers": [
+        {
+          "content": "Cough / Flu",
+          "points_to": 6
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Have you received the flu shot? ",
+      "answers": [
+        {
+          "content": "Yes",
+          "points_to": 7
+        },
+        {
+          "content": "Not yet fam",
+          "points_to": 7
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "What other symptoms are you experiencing? ",
+      "answers": [
+        {
+          "content": "Cough ",
+          "points_to": 8
+        },
+        {
+          "content": "Headache",
+          "points_to": 8
+        },
+        {
+          "content": "Sore Throat",
+          "points_to": 8
+        },
+        {
+          "content": "Pain in face",
+          "points_to": 8
+        },
+        {
+          "content": "Mild Ache",
+          "points_to": 8
+        },
+        {
+          "content": "Severe Muscle Ache",
+          "points_to": 8
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Do you have any of the following?",
+      "answers": [
+        {
+          "content": "Chemotherapy or recently been treated for cancer",
+          "points_to": 3,
+          "leads_to_response": true
+        },
+        {
+          "content": "Heart Failure",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "Asthma, COPD, Cystic Fibrosis or other lung disease",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "Spleen Removed",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "None of the above",
+          "points_to": 9
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "What are your fever symptoms like?",
+      "answers": [
+        {
+          "content": "Fever > 102",
+          "points_to": 10
+        },
+        {
+          "content": "Fever < 102",
+          "points_to": 10
+        },
+        {
+          "content": "No Fever",
+          "points_to": 4,
+          "leads_to_response": true
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "How long have you experienced these symptoms",
+      "answers": [
+        {
+          "content": "Less than 3 days",
+          "points_to": 1,
+          "leads_to_response": true
+        },
+        {
+          "content": "3-7 days",
+          "points_to": 4,
+          "leads_to_response": true
+        },
+        {
+          "content": "Over 1 week",
+          "points_to": 4,
+          "leads_to_response": true
+        }
+      ]
+    }
+  ],
+  "responses": [
+    {
+      "id": 1,
+      "recommendation": "We recommend that you see a doctor today about your symptoms",
+      "with_insurance": true,
+      "insurance_message": {
+        "with_insurance": "Contact your insurance provider",
+        "no_insurance": "Here are providers near you"
+      }
+    },
+    {
+      "id": 2,
+      "recommendation": "We recommend that you see a doctor today about your symptoms. You might be contageous so don't touch anybody. ",
+      "with_insurance": true,
+      "insurance_message": {
+        "with_insurance": "Contact your insurance provider",
+        "no_insurance": "Here are providers near you"
+      }
+    },
+    {
+      "id": 3,
+      "recommendation": "Go to an urgent care",
+      "with_insurance": true,
+      "insurance_message": {
+        "with_insurance": "Go to the urgent care for a hospital you are covered at",
+        "no_insurance": "Here are some local urgent care locations for you"
+      }
+    },
+    {
+      "id": 4,
+      "recommendation": "We don't think you need to see a doctor. But it appears that you are experiencing some flu symptoms so take it easy.",
+      "with_insurance": true,
+      "insurance_message": {
+        "with_insurance": "Go to the urgent care for a hospital you are covered at",
+        "no_insurance": "Here are some local urgent care locations for you"
+      }
+    }
+  ]
+}
