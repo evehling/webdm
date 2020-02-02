@@ -21,7 +21,10 @@ from spacy.matcher import Matcher
 from spacy.lang import en
 spacy_stopwords = en.stop_words.STOP_WORDS
 nlp = spacy.load('en')
+
+from flask_cors import CORS
 app = Flask(__name__)
+app = CORS(app)
 
 #Lemmatized symptoms
 ALLERGIES = ["sneeze", "red", "itchy", "runny", "nose","blocked","allergic","watering","eyes", "wheezing", 
@@ -77,19 +80,21 @@ def symptomCategory(lemmas):
 #Input: Takes in a JSON object with input string
 #Return: JSON object with predicted category string
 @app.route('/', methods=['POST'])
+@cross_origin()
 def home():
-    req_data = request.get_json()
-    input = req_data['input']
-    data = nlp(input) #generate nlp object
-    filtered = []
-    for word in data: #extract words
-        if word.is_stop==False:
-            filtered.append(word)
-    lemmas = []
-    for word in filtered: #lemmatize words
-        lemmas.append(str(word.lemma_))
-    category = symptomCategory(lemmas);
-    return jsonify({"category":category})
+    # req_data = request.get_json()
+    # input = req_data['input']
+    # data = nlp(input) #generate nlp object
+    # filtered = []
+    # for word in data: #extract words
+    #     if word.is_stop==False:
+    #         filtered.append(word)
+    # lemmas = []
+    # for word in filtered: #lemmatize words
+    #     lemmas.append(str(word.lemma_))
+    # category = symptomCategory(lemmas);
+    # return jsonify({"category":category})
+    return "hello world"
 
 if __name__ == '__main__':
 #     # This is used when running locally only. When deploying to Google App
