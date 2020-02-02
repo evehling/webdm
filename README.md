@@ -12,5 +12,8 @@ The extension pulls relevent medical-related searches from the search bar and PO
 # Backend
 Sentence extracted from searchbar is POSTed using Flask and read into an NPL object. The SpaCy library was used to tokenize and lemmatize the input data, which is then cross referenced against a list of linked key terms to return a medical category. 
 
+# UI
+We spent the majority of our time creating and connecting the extention and backend components so the time we had left was put towards demonstrating the functionality rather than the aesthetics of the exention. Ideally we intended to only take up a small potion of the screen with the exentio window once the query is activated.
+
 # Future Plans
-Integrating patient data through external sources like 23 and Me could be used to better refine pertinent suggestions. In the future, database integration and more robust NLP processing would be ideal.
+Integrating patient data through external sources like 23 and Me could be used to better refine pertinent suggestions. In the future, database integration and more robust NLP processing would be ideal. Connecting/collaborating with a medical provider like Kaiser Permenente and integrating existing direct pipelines to connect with a patient's physician through the extention would also help make the process of aquiring medical knowledge quicker and more intuitive (however securing user data would be a large portion of the process).
