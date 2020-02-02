@@ -1,12 +1,16 @@
 {
   "condition": [
     {
-      "name": "acne",
+      "name": "Skin",
       "index_first_question": 1
     },
     {
-      "name": "Cough / Flu",
+      "name": "Cold/Flu",
       "index_first_question": 6
+    },
+    {
+      "name": "Stroke",
+      "index_first_question": 
     }
   ],
   "questions": [
