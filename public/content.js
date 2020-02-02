@@ -46,7 +46,6 @@ function getSearchQuery() {
             <div>Buttons</div>
           </div>
        `;
-  /* 
         console.log("making api call");
         fetch("https://73f816ea.ngrok.io",
           {
@@ -65,7 +64,6 @@ function getSearchQuery() {
           .then(res => {console.log(res); return res.json()})
           .then(data => console.log(data))
           .catch(err => console.log(err));
-  */
     // }, 1000);
    }
  }
