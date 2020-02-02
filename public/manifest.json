@@ -3,7 +3,7 @@
   "manifest_version": 2,
 
   "name": "Webdm Extension",
-  "description": "Start of a webdm extension",
+  "description": "Start of a webdm extension again",
   "version": "0.0.1",
 
   "browser_action": {
@@ -16,13 +16,14 @@
     "128": "logo-small.png"
   },
   "permissions": [
+    "tabs"
   ],
 
   "content_scripts": [
 
     {
       "matches": [
-        "<all_urls>"
+        "https://www.google.com/"
       ],
       "js": ["content.js"]
     }

@@ -1,0 +1,23 @@
+#readDom{
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif
+}
+
+ h1 {
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-style: oblique;
+}
+
+.container{
+    background-color: black;
+    height: 100vh;
+    width: 40vw;
+}
+
+#overlay{
+    display:none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin:0;
+}
